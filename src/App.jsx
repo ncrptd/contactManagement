@@ -1,6 +1,6 @@
 import './App.css'
 import Header from './components/Header'
-import Contacts from './components/contacts'
+import Contacts from './components/Contacts'
 import { useContacts } from './hooks/ContactHooks'
 
 function App() {
