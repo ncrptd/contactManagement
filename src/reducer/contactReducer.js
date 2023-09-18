@@ -4,7 +4,11 @@ const ACTIONS = {
     TOGGLE_OPEN: 'toggle-open',
     ADD_NEW_CONTACT: 'add-new-contact',
     SET_NEW_CONTACT_DETAILS: 'set-new-contact-details',
-    SET_SORT_ORDER: 'set-sort-order'
+    SET_SORT_ORDER: 'set-sort-order',
+    SET_SEARCH_VALUE: 'set-search-value',
+    DELETE_CONTACT: 'delete-contact',
+    TOGGLE_TOOLTIP: 'toggle-tooltip',
+    UPDATE_CONTACT: 'update-contact'
 }
 
 
@@ -28,6 +32,18 @@ function contactReducer(state, action) {
         }
         case ACTIONS.SET_SORT_ORDER: {
             return { ...state, sortOrder: payload.sortOrder }
+        }
+        case ACTIONS.SET_SEARCH_VALUE: {
+            return { ...state, searchValue: payload.value }
+        }
+        case ACTIONS.DELETE_CONTACT: {
+            return { ...state, contacts: payload.updatedContacts }
+        }
+        case ACTIONS.TOGGLE_TOOLTIP: {
+            return { ...state, tooltipOpen: payload.id }
+        }
+        case ACTIONS.UPDATE_CONTACT: {
+            return { ...state, contacts: payload.updatedContacts }
         }
     }
 
