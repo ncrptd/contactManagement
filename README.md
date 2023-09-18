@@ -19,25 +19,20 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/contact-management-frontend.git
+   https://github.com/ncrptd/contactManagement
    ```
 
 2. Install dependencies:
 
    ```bash
-   cd contact-management-frontend
+   cd contactManagement
    npm install
    ```
 
-3. Create a `.env` file in the root directory with the following content:
-
-   ```plaintext
-   REACT_APP_API_URL=http://localhost:3000/api
-   ```
 
    Update the `REACT_APP_API_URL` value with the base URL of your Contact Management API.
 
-4. Start the development server:
+3. Start the development server:
 
    ```bash
    npm start
