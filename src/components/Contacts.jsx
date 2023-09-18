@@ -4,10 +4,8 @@ import { ACTIONS } from "../reducer/contactReducer";
 
 function Contacts() {
     const { state } = useContacts();
-    const { contacts, selectedContacts } = state;
+    const { contacts, selectedContacts, sortOrder } = state;
     const { dispatch } = useDispatch();
-
-
     const handleContactSelect = (id) => {
         const isContactPresent = selectedContacts.includes(id);
         let newContacts;
@@ -19,8 +17,20 @@ function Contacts() {
         dispatch({ type: ACTIONS.SELECT_CONTACT, payload: { selectedContacts: newContacts } })
     };
 
+    const getSortedContacts = (sort, data) => {
+
+        const sortedContacts = [...data];
+        if (sort === 'asc') {
+            return sortedContacts.sort((a, b) => a?.name.localeCompare(b?.name));
+        } else if (sort === 'des') {
+            return sortedContacts.sort((a, b) => b?.name.localeCompare(a?.name));
+        }
+        return sortedContacts
+    }
+    const visibleData = getSortedContacts(sortOrder, contacts);
+
     return (
-        contacts.length < 1 ? <p>loading...</p> : <table className="w-full text-center">
+        visibleData.length < 1 ? <p>loading...</p> : <table className="w-full text-center">
             <tbody>
                 <tr className="bg-purple-600 text-white border-r ">
                     <th className="border-r border-slate-400 p-2 text-left">Contact</th>
@@ -29,10 +39,10 @@ function Contacts() {
                     <th className="border-r border-slate-400 p-2">Created Date</th>
                 </tr>
 
-                {contacts.map((item) => <tr key={item?._id} >
+                {visibleData.map((item) => <tr className="" key={item?._id} >
                     <td className={`flex justify-between border-r border-slate-400 `}>
                         <form>
-                            <input className="color-white cursor-pointer accent-purple-400 rounded-2xl" type="checkbox" name="" id="" value={selectedContacts.includes(item?._id)} onChange={() => handleContactSelect(item._id)} />
+                            <input className="color-white cursor-pointer accent-purple-400 rounded-2xl" type="checkbox" name="" id="" checked={selectedContacts.includes(item?._id)} onChange={() => handleContactSelect(item._id)} />
                         </form>
                         <span>{item?.name}</span>
                         <span className="cursor-pointer ">

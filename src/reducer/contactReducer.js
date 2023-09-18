@@ -3,7 +3,8 @@ const ACTIONS = {
     SELECT_CONTACT: 'select-contact',
     TOGGLE_OPEN: 'toggle-open',
     ADD_NEW_CONTACT: 'add-new-contact',
-    SET_NEW_CONTACT_DETAILS: 'set-new-contact-details'
+    SET_NEW_CONTACT_DETAILS: 'set-new-contact-details',
+    SET_SORT_ORDER: 'set-sort-order'
 }
 
 
@@ -24,6 +25,9 @@ function contactReducer(state, action) {
         }
         case ACTIONS.ADD_NEW_CONTACT: {
             return { ...state, contacts: payload.updatedContacts }
+        }
+        case ACTIONS.SET_SORT_ORDER: {
+            return { ...state, sortOrder: payload.sortOrder }
         }
     }
 

@@ -8,7 +8,8 @@ const initialState = {
     contacts: [],
     selectedContacts: [],
     open: false,
-    contactDetails: null
+    contactDetails: null,
+    sortOrder: 'asc'
 }
 function ContactProvider({ children }) {
     const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -24,6 +25,9 @@ function ContactProvider({ children }) {
         }
     }
 
+    const setSortOrder = (sortOrder) => {
+        dispatch({ type: ACTIONS.SET_SORT_ORDER, payload: { sortOrder } })
+    }
     useEffect(() => {
         const getContacts = async () => {
             try {
@@ -43,7 +47,7 @@ function ContactProvider({ children }) {
 
 
     return (
-        <ContactContext.Provider value={{ state, createContact }}>
+        <ContactContext.Provider value={{ state, createContact, setSortOrder }}>
             <ContactDispatchContext.Provider value={{ dispatch }}>
                 {children}
             </ContactDispatchContext.Provider>
