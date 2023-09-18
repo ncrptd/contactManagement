@@ -3,6 +3,10 @@
 
 This is a React application that interacts with the Contact Management API, allowing users to manage their contacts, including adding, editing, deleting, updating, and searching for contacts.
 
+
+Live Link: https://contactmanagementrockey.netlify.app/
+
+https://www.loom.com/share/e2a0a3a54ef24f16bc77fbb9a123ebf4?sid=630e9af8-d356-46ef-85d1-815b632a6e3c
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
